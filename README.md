@@ -55,11 +55,25 @@ server/src/
 
 ### Frontend / Vercel
 
-1. Set Root Directory là `client` (hoặc deploy từ monorepo với workspace build).
-2. Build command: `npm run build -w client`.
-3. Output: `client/dist`.
-4. Set `VITE_API_URL` trỏ tới backend.
-5. SPA fallback đã được khai báo trong `client/vercel.json`.
+Project đã có [vercel.json](./vercel.json), cấu hình deploy từ root monorepo.
+
+1. Push code lên GitHub.
+2. Vào Vercel → **Add New Project** → import repository `KaratedoTinhTri`.
+3. Giữ **Root Directory** là `/`.
+4. Vercel sẽ tự dùng:
+   - Install: `npm install`
+   - Build: `npm run build -w client`
+   - Output: `client/dist`
+5. Thêm Environment Variable:
+
+   ```text
+   VITE_API_URL=https://<backend-domain>/api
+   ```
+
+   Nếu chưa deploy backend, có thể tạm bỏ qua vì frontend đang dùng mock data.
+6. Bấm **Deploy**.
+
+SPA fallback đã được khai báo để các URL như `/tin-tuc/...` và `/admin` không bị 404 khi refresh.
 
 ### Backend / Render hoặc VPS
 

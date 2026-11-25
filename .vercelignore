@@ -1,0 +1,8 @@
+node_modules
+client/dist
+server/dist
+packages/shared/dist
+.env
+.env.local
+coverage
+*.log
